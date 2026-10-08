@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oral Viva Preparation Engine & Simulator | Semester 5 SSASIT</title>
+  <meta name="description" content="113+ verified GTU Semester 5 viva questions with model answers, speech synthesis audio, high-probability badges, and oral examination practice for SSASIT Computer Engineering.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased selection:bg-sky-500 selection:text-slate-950">
+
+  <div class="ambient-bg"></div>
+  <div class="ambient-grid"></div>
+
+  <div id="navbar-container"></div>
+  <div id="breadcrumbs-container" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"></div>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-8">
+
+    <!-- Header & Oral Viva Banner -->
+    <header class="glass-panel rounded-3xl p-6 sm:p-10 border border-slate-800 space-y-4">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div class="space-y-1">
+          <div class="flex items-center gap-2">
+            <span class="px-2.5 py-0.5 rounded-full font-mono text-xs font-bold bg-sky-500/10 text-sky-400 border border-sky-500/30">
+              ORAL SIMULATOR
+            </span>
+            <span class="px-2.5 py-0.5 rounded-full font-mono text-xs bg-slate-800 text-slate-300">
+              113+ VERIFIED Q&AS
+            </span>
+          </div>
+          <h1 class="text-3xl sm:text-4xl font-black text-slate-100 tracking-tight">
+            Oral Viva Preparation Engine
+          </h1>
+          <p class="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
+            Test yourself with authentic questions asked by GTU examiners. Listen to questions aloud via speech synthesis, reveal concise model answers, and save starred questions for rapid last-minute revision.
+          </p>
+        </div>
+
+        <!-- Quick Random & Speech Tools -->
+        <div class="flex flex-wrap items-center gap-2">
+          <button id="viva-random-btn" class="btn-glow px-4 py-2.5 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-600 text-slate-950 font-bold text-xs font-mono tracking-wide shadow-lg shadow-sky-500/20 flex items-center gap-2 hover:scale-[1.02] active:scale-[0.98] transition-all">
+            <span>🎲</span>
+            <span>Ask Random Question</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Subject Filter Pills (Dynamically rendered in viva.js) -->
+      <div class="pt-3 border-t border-slate-800/80">
+        <div class="text-[11px] font-mono uppercase tracking-wider text-slate-400 mb-2">Filter by Subject:</div>
+        <div class="flex flex-wrap items-center gap-2" id="subject-filters">
+          <!-- Populated by initVivaEngine() -->
+        </div>
+      </div>
+    </header>
+
+    <!-- Viva Control Toolbar (Search, High Prob, Starred, Expand/Collapse) -->
+    <section class="glass-card rounded-2xl p-4 sm:p-5 border border-slate-800 flex flex-wrap items-center justify-between gap-4">
+      
+      <!-- Search Input -->
+      <div class="flex-1 min-w-[240px] relative">
+        <span class="absolute inset-y-0 left-3 flex items-center pointer-events-none text-slate-400">🔍</span>
+        <input 
+          type="text" 
+          id="viva-search-input" 
+          placeholder="Filter viva questions by keyword (e.g., 8085, TCP, Dijkstra, WBS, NumPy)..." 
+          class="w-full pl-9 pr-4 py-2 rounded-xl bg-slate-900 border border-slate-700/80 focus:border-sky-500 text-xs sm:text-sm text-slate-200 placeholder:text-slate-400 focus:outline-none transition-all"
+        >
+      </div>
+
+      <!-- Filter Toggles & Batch Buttons -->
+      <div class="flex flex-wrap items-center gap-2 text-xs font-mono">
+        <button id="filter-important-btn" class="px-3 py-2 rounded-xl bg-slate-900 text-slate-400 hover:text-white border border-slate-800 flex items-center gap-1.5 transition-all">
+          <span>🔥</span>
+          <span>High Probability</span>
+        </button>
+
+        <button id="filter-starred-btn" class="px-3 py-2 rounded-xl bg-slate-900 text-slate-400 hover:text-white border border-slate-800 flex items-center gap-1.5 transition-all">
+          <span>★</span>
+          <span>Starred Only</span>
+        </button>
+
+        <div class="h-6 w-[1px] bg-slate-800 hidden sm:block"></div>
+
+        <button id="viva-expand-all" class="px-3 py-2 rounded-xl bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition-colors">
+          Expand Answers
+        </button>
+
+        <button id="viva-collapse-all" class="px-3 py-2 rounded-xl bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition-colors">
+          Collapse All
+        </button>
+      </div>
+
+    </section>
+
+    <!-- Results Counter & Status -->
+    <div class="flex items-center justify-between text-xs font-mono text-slate-400 px-1">
+      <span id="viva-results-counter">Loading viva database...</span>
+      <span class="hidden sm:inline">Tip: Click 🎙️ to hear the question or ★ to bookmark</span>
+    </div>
+
+    <!-- Questions Container -->
+    <section class="space-y-4" id="viva-questions-list">
+      <!-- Populated via viva.js -->
+    </section>
+
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/viva.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      window.renderNavbar('viva');
+      window.renderBreadcrumbs([
+        { label: 'Viva Prep', url: 'viva.html' }
+      ]);
+      window.renderFooter();
+
+      // Initialize viva engine
+      window.initVivaEngine();
+    });
+  </script>
+</body>
+</html>

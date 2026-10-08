@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rapid Revision & Formulas | Semester 5 SSASIT</title>
+  <meta name="description" content="Quick formulas, key definitions, numerical equations, and viva memory rules for Semester 5 Computer Engineering GTU exams.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased selection:bg-pink-500 selection:text-slate-950">
+
+  <div class="ambient-bg"></div>
+  <div class="ambient-grid"></div>
+
+  <div id="navbar-container"></div>
+  <div id="breadcrumbs-container" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"></div>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-8">
+
+    <!-- Header Section -->
+    <header class="glass-panel rounded-3xl p-6 sm:p-10 border border-slate-800 space-y-4">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div class="space-y-1">
+          <div class="flex items-center gap-2">
+            <span class="px-2.5 py-0.5 rounded-full font-mono text-xs font-bold bg-pink-500/10 text-pink-400 border border-pink-500/30">
+              LAST-MINUTE CHEAT SHEET
+            </span>
+            <span class="px-2.5 py-0.5 rounded-full font-mono text-xs bg-slate-800 text-slate-300">
+              FORMULAS & DEFINITIONS
+            </span>
+          </div>
+          <h1 class="text-3xl sm:text-4xl font-black text-slate-100 tracking-tight">
+            Rapid Revision & Formula Hub
+          </h1>
+          <p class="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
+            Essential formulas, numerical equations, critical differences, and oral viva trap points for quick revision on the day of your viva and mid exams.
+          </p>
+        </div>
+
+        <a href="viva.html" class="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700 font-mono text-xs font-semibold flex items-center gap-2">
+          <span>⚡</span>
+          <span>Back to Viva Simulator</span>
+        </a>
+      </div>
+
+      <!-- Subject Filters Container -->
+      <div class="pt-3 border-t border-slate-800/80">
+        <div class="text-[11px] font-mono uppercase tracking-wider text-slate-400 mb-2">Filter by Course:</div>
+        <div class="flex flex-wrap items-center gap-2" id="revision-subject-filters">
+          <!-- Injected via revision.js -->
+        </div>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-800/60 font-mono text-xs">
+        <span class="text-slate-400 text-[11px] mr-1">Concept Type:</span>
+        <button class="rev-cat-btn px-3 py-1 rounded-lg bg-sky-500 text-slate-950 font-bold border border-sky-400" data-cat="all">
+          All Types
+        </button>
+        <button class="rev-cat-btn px-3 py-1 rounded-lg bg-slate-900 text-slate-400 border border-slate-800 hover:text-white" data-cat="Formula">
+          📐 Formulas & Math
+        </button>
+        <button class="rev-cat-btn px-3 py-1 rounded-lg bg-slate-900 text-slate-400 border border-slate-800 hover:text-white" data-cat="Definition">
+          📖 Core Definitions
+        </button>
+        <button class="rev-cat-btn px-3 py-1 rounded-lg bg-slate-900 text-slate-400 border border-slate-800 hover:text-white" data-cat="Oral Viva Trap">
+          ⚠️ Viva Traps & Gotchas
+        </button>
+      </div>
+    </header>
+
+    <!-- Revision Status Bar -->
+    <div class="flex items-center justify-between text-xs font-mono text-slate-400 px-1">
+      <span id="revision-counter">Loading revision cards...</span>
+      <span>Click "📋 Copy" on any card to copy code or formula</span>
+    </div>
+
+    <!-- Cards Grid Container -->
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-5" id="revision-cards-list">
+      <!-- Populated via revision.js -->
+    </section>
+
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/revision.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      window.renderNavbar('revision');
+      window.renderBreadcrumbs([
+        { label: 'Rapid Revision', url: 'revision.html' }
+      ]);
+      window.renderFooter();
+
+      // Initialize revision engine
+      window.initRevisionEngine();
+    });
+  </script>
+</body>
+</html>

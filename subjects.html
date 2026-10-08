@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semester 5 Subjects & Courses | SSASIT Computer Engineering</title>
+  <meta name="description" content="Explore all 7 subjects for GTU B.E. Semester 5 at SSASIT Computer Engineering: MPI, CN, PDS, SS, WAD, PM, and Societal Internship.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased selection:bg-sky-500 selection:text-slate-950">
+
+  <div class="ambient-bg"></div>
+  <div class="ambient-grid"></div>
+
+  <div id="navbar-container"></div>
+  <div id="breadcrumbs-container" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"></div>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-10">
+
+    <!-- Header Section -->
+    <header class="glass-panel rounded-3xl p-6 sm:p-10 border border-slate-800 space-y-4">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <span class="px-2.5 py-0.5 rounded-full font-mono text-xs font-bold bg-sky-500/10 text-sky-400 border border-sky-500/30">
+            GTU CURRICULUM DIRECTORY
+          </span>
+          <h1 class="text-3xl sm:text-4xl font-black text-slate-100 tracking-tight mt-1">
+            All 7 Semester 5 Courses
+          </h1>
+          <p class="text-sm text-slate-300 max-w-2xl mt-1 leading-relaxed">
+            Detailed breakdown of GTU course structures, subject faculties, credit allocations, syllabus weightages, and dedicated oral viva preparation links.
+          </p>
+        </div>
+
+        <a href="viva.html" class="btn-glow px-5 py-2.5 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-600 text-slate-950 font-bold text-xs font-mono tracking-wide shadow-lg shadow-sky-500/25 flex items-center gap-2">
+          <span>⚡</span>
+          <span>Launch Oral Viva Simulator</span>
+        </a>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-800/80 font-mono text-xs">
+        <button class="sub-filter-tab px-3.5 py-1.5 rounded-xl bg-sky-500 text-slate-950 font-bold border border-sky-400" data-filter="all">
+          All Courses (7)
+        </button>
+        <button class="sub-filter-tab px-3.5 py-1.5 rounded-xl bg-slate-900 text-slate-400 border border-slate-800 hover:text-white" data-filter="Core">
+          Core Engineering (5)
+        </button>
+        <button class="sub-filter-tab px-3.5 py-1.5 rounded-xl bg-slate-900 text-slate-400 border border-slate-800 hover:text-white" data-filter="Management">
+          Management & Others (2)
+        </button>
+      </div>
+    </header>
+
+    <!-- Subjects Grid -->
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="all-subjects-list">
+      <!-- Injected via JavaScript -->
+    </section>
+
+    <!-- Comprehensive Course Structure Comparison Matrix -->
+    <section class="space-y-4">
+      <div class="flex items-center justify-between">
+        <h2 class="text-xl sm:text-2xl font-extrabold text-slate-100 tracking-tight flex items-center gap-2">
+          <span>📊</span>
+          <span>Curriculum Credit & Evaluation Matrix</span>
+        </h2>
+        <span class="text-xs font-mono text-slate-400">GTU Teaching & Examination Scheme</span>
+      </div>
+
+      <div class="glass-card rounded-2xl border border-slate-800 overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="data-table m-0">
+            <thead>
+              <tr>
+                <th>Subject Name</th>
+                <th>Course Code</th>
+                <th>Credits</th>
+                <th>Category</th>
+                <th>Viva Date</th>
+                <th>Mid Exam Scope</th>
+                <th>Direct Hub</th>
+              </tr>
+            </thead>
+            <tbody id="matrix-table-body">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/navigation.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      window.renderNavbar('subjects');
+      window.renderBreadcrumbs([
+        { label: 'Subjects', url: 'subjects.html' }
+      ]);
+      window.renderFooter();
+
+      const data = window.ACADEMIC_DATA;
+      if (!data) return;
+
+      let currentFilter = 'all';
+
+      function renderList() {
+        const container = document.getElementById('all-subjects-list');
+        if (!container) return;
+
+        const filtered = data.SUBJECTS.filter(s => {
+          if (currentFilter === 'all') return true;
+          if (currentFilter === 'Core') return s.category.includes('Core') || ['mpi', 'cn', 'pds', 'ss', 'wad'].includes(s.id);
+          if (currentFilter === 'Management') return ['pm', 'internship'].includes(s.id);
+          return true;
+        });
+
+        container.innerHTML = filtered.map(s => {
+          const qCount = data.VIVA_QUESTIONS.filter(q => q.subjectId === s.id).length;
+          const units = (data.SYLLABUS[s.id] && data.SYLLABUS[s.id].units) ? data.SYLLABUS[s.id].units.length : 0;
+          const pracs = data.PRACTICALS[s.id] ? data.PRACTICALS[s.id].length : 0;
+
+          return `
+            <div class="glass-card tilt-card rounded-2xl p-6 border border-slate-800 flex flex-col justify-between space-y-6 group hover:border-slate-700 transition-all">
+              <div class="space-y-4">
+                <div class="flex items-start justify-between">
+                  <div class="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center text-2xl shadow-inner">
+                    ${s.icon}
+                  </div>
+                  <div class="text-right">
+                    <span class="px-2.5 py-0.5 rounded font-mono text-xs font-bold bg-sky-500/10 text-sky-400 border border-sky-500/30">
+                      ${s.code}
+                    </span>
+                    <div class="text-[11px] font-mono text-slate-400 mt-1">${s.credits} Credits • ${s.category}</div>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 class="text-xl font-bold text-slate-100 group-hover:text-sky-300 transition-colors">
+                    ${s.name}
+                  </h3>
+                  <div class="text-xs font-mono text-slate-400 pt-1">Faculty: <strong class="text-slate-200">${s.faculty}</strong></div>
+                </div>
+
+                <p class="text-xs text-slate-400 leading-relaxed">
+                  ${s.description}
+                </p>
+
+                <!-- Academic Specs -->
+                <div class="grid grid-cols-3 gap-2 pt-1 font-mono text-center">
+                  <div class="p-2 rounded-lg bg-slate-900/80 border border-slate-800">
+                    <div class="text-sky-400 font-bold text-sm">${qCount}</div>
+                    <div class="text-[10px] text-slate-400">Viva Q&As</div>
+                  </div>
+                  <div class="p-2 rounded-lg bg-slate-900/80 border border-slate-800">
+                    <div class="text-emerald-400 font-bold text-sm">${units}</div>
+                    <div class="text-[10px] text-slate-400">Modules</div>
+                  </div>
+                  <div class="p-2 rounded-lg bg-slate-900/80 border border-slate-800">
+                    <div class="text-pink-400 font-bold text-sm">${pracs}</div>
+                    <div class="text-[10px] text-slate-400">Practicals</div>
+                  </div>
+                </div>
+
+                <!-- Viva Date Banner -->
+                <div class="p-3 rounded-xl bg-slate-900/50 border border-slate-800/80 flex items-center justify-between text-xs font-mono">
+                  <span class="text-slate-400">Term Work Viva:</span>
+                  <span class="text-sky-400 font-bold">${s.vivaDate}</span>
+                </div>
+              </div>
+
+              <!-- Action Links -->
+              <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between gap-2">
+                <a href="subjects/${s.id}.html" class="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700/80 font-mono text-xs font-semibold flex items-center gap-1.5 transition-colors">
+                  <span>Open Hub</span>
+                  <span>→</span>
+                </a>
+                <a href="viva.html?subject=${s.id}" class="btn-glow px-4 py-2 rounded-xl bg-sky-500/10 hover:bg-sky-500 text-sky-400 hover:text-slate-950 border border-sky-500/30 font-mono text-xs font-bold transition-all">
+                  ⚡ Viva Mode
+                </a>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      renderList();
+
+      // Filter tabs event
+      document.querySelectorAll('.sub-filter-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          document.querySelectorAll('.sub-filter-tab').forEach(t => {
+            t.classList.remove('bg-sky-500', 'text-slate-950', 'font-bold', 'border-sky-400');
+            t.classList.add('bg-slate-900', 'text-slate-400', 'border-slate-800');
+          });
+          tab.classList.add('bg-sky-500', 'text-slate-950', 'font-bold', 'border-sky-400');
+          tab.classList.remove('bg-slate-900', 'text-slate-400', 'border-slate-800');
+          currentFilter = tab.dataset.filter;
+          renderList();
+        });
+      });
+
+      // Populate Comparison Matrix
+      const matrixBody = document.getElementById('matrix-table-body');
+      if (matrixBody) {
+        matrixBody.innerHTML = data.SUBJECTS.map(s => `
+          <tr>
+            <td class="font-bold text-slate-200 flex items-center gap-2">
+              <span>${s.icon}</span>
+              <span>${s.name}</span>
+            </td>
+            <td class="font-mono text-xs text-sky-400">${s.code}</td>
+            <td class="font-mono text-xs">${s.credits}</td>
+            <td class="text-xs text-slate-300">${s.category}</td>
+            <td class="font-mono text-xs text-emerald-400">${s.vivaDate}</td>
+            <td class="font-mono text-xs text-slate-400">Units ${s.midExamUnits.join(', ')}</td>
+            <td>
+              <a href="subjects/${s.id}.html" class="text-xs font-mono text-sky-400 hover:underline">
+                View →
+              </a>
+            </td>
+          </tr>
+        `).join('');
+      }
+    });
+  </script>
+</body>
+</html>

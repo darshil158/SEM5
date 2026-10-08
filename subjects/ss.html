@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Software (SS) | Semester 5 SSASIT</title>
+  <meta name="description" content="Complete GTU course hub for System Software (BE05000261). Covers Assemblers, Macro Processors, Compilers, Linkers, Loaders, viva Q&As, and lab practicals.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased selection:bg-sky-500 selection:text-slate-950">
+
+  <div class="ambient-bg"></div>
+  <div class="ambient-grid"></div>
+
+  <div id="navbar-container"></div>
+  <div id="breadcrumbs-container" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"></div>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-10">
+
+    <!-- Subject Hero Section -->
+    <section id="subject-hero">
+      <!-- Injected via subject-page.js -->
+    </section>
+
+    <!-- Quick Navigation Anchor Bar -->
+    <div class="flex items-center gap-3 overflow-x-auto py-2 border-b border-slate-800 text-xs font-mono text-slate-400">
+      <span>Jump to:</span>
+      <a href="#syllabus" class="px-3 py-1 rounded-lg bg-slate-900 hover:text-white border border-slate-800">📋 GTU Syllabus Units</a>
+      <a href="#viva" class="px-3 py-1 rounded-lg bg-slate-900 text-sky-400 border border-slate-800">⚡ Viva Questions & Answers</a>
+      <a href="#practicals" class="px-3 py-1 rounded-lg bg-slate-900 hover:text-white border border-slate-800">🧪 Laboratory Practicals</a>
+    </div>
+
+    <!-- Syllabus Section -->
+    <section id="syllabus" class="space-y-4">
+      <div class="flex items-center justify-between">
+        <h2 class="text-xl sm:text-2xl font-extrabold text-slate-100 tracking-tight flex items-center gap-2">
+          <span>📋</span>
+          <span>GTU Syllabus Modules</span>
+        </h2>
+        <span class="text-xs font-mono text-slate-400">BE05000261 Curriculum</span>
+      </div>
+
+      <div class="space-y-4" id="subject-syllabus-list">
+        <!-- Injected via subject-page.js -->
+      </div>
+    </section>
+
+    <!-- Viva Questions Section -->
+    <section id="viva" class="space-y-4">
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <div>
+          <h2 class="text-xl sm:text-2xl font-extrabold text-slate-100 tracking-tight flex items-center gap-2">
+            <span>⚡</span>
+            <span>System Software Oral Viva Questions</span>
+          </h2>
+          <p class="text-xs text-slate-400">Compiled from SSASIT question banks, two-pass assembler designs, and compiler viva trends.</p>
+        </div>
+        <a href="../viva.html?subject=ss" class="btn-glow px-4 py-2 rounded-xl bg-sky-500/10 hover:bg-sky-500 text-sky-300 hover:text-slate-950 border border-sky-500/30 font-mono text-xs font-bold transition-all">
+          Launch Fullscreen Viva Mode →
+        </a>
+      </div>
+
+      <div class="space-y-4" id="subject-viva-list">
+        <!-- Injected via subject-page.js -->
+      </div>
+    </section>
+
+    <!-- Laboratory Practicals Section -->
+    <section id="practicals" class="space-y-4">
+      <div class="flex items-center justify-between">
+        <h2 class="text-xl sm:text-2xl font-extrabold text-slate-100 tracking-tight flex items-center gap-2">
+          <span>🧪</span>
+          <span>Laboratory Practicals (LEX, YACC & Assembler Simulations)</span>
+        </h2>
+        <span class="text-xs font-mono text-slate-400">Term Work Continuous Evaluation</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="subject-practicals-list">
+        <!-- Injected via subject-page.js -->
+      </div>
+    </section>
+
+    <!-- Adjacent Subjects Navigation -->
+    <nav id="subject-prev-next">
+      <!-- Injected via subject-page.js -->
+    </nav>
+
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/navigation.js"></script>
+  <script src="../js/subject-page.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      window.renderNavbar('subjects');
+      window.renderSubjectDetail('ss');
+      window.renderFooter();
+    });
+  </script>
+</body>
+</html>

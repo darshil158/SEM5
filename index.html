@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEM 5 VIVA & Exam Preparation Portal | SSASIT Computer Engineering</title>
+  <meta name="description" content="Authoritative Semester 5 Viva and Term Work preparation portal for SSASIT Computer Engineering students. Covers MPI, CN, PDS, SS, WAD, PM, and Internship with 113+ viva questions, syllabus units, and revision cards.">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              900: '#0c4a6e',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Custom Design System -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased selection:bg-sky-500 selection:text-slate-950">
+  
+  <!-- Ambient Background Gradients -->
+  <div class="ambient-bg"></div>
+  <div class="ambient-grid"></div>
+
+  <!-- Global Header Navigation -->
+  <div id="navbar-container"></div>
+
+  <!-- Breadcrumbs -->
+  <div id="breadcrumbs-container" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"></div>
+
+  <!-- Main Content Area -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-12">
+
+    <!-- HERO SECTION -->
+    <section class="glass-panel rounded-3xl p-6 sm:p-12 border border-slate-800 relative overflow-hidden">
+      <!-- Glow orbs -->
+      <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-gradient-to-br from-sky-500/20 via-indigo-500/10 to-transparent blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-gradient-to-tr from-emerald-500/10 via-cyan-500/10 to-transparent blur-3xl pointer-events-none"></div>
+
+      <div class="relative z-10 max-w-4xl space-y-6">
+        <!-- University & Institute Badges -->
+        <div class="flex flex-wrap items-center gap-2 text-xs font-mono">
+          <span class="px-3 py-1 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/30 flex items-center gap-1.5 font-bold">
+            <span class="w-2 h-2 rounded-full bg-sky-400 animate-ping"></span>
+            SSASIT COMPUTER ENGINEERING
+          </span>
+          <span class="px-3 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700">
+            GTU B.E. SEMESTER 5 • AY 2026
+          </span>
+          <span class="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+            CLASS 31, 32, 33
+          </span>
+        </div>
+
+        <!-- Main Title -->
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-100 tracking-tight leading-tight">
+          Master Your <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-indigo-300 to-emerald-400">Semester 5 Viva</span> & Term Work Submission
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-3xl">
+          The definitive, syllabus-grounded academic platform engineered exclusively from official SSASIT departmental schedules, GTU syllabus sheets, assignments, and practical question banks.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-wrap items-center gap-3 pt-2">
+          <a href="viva.html" class="btn-glow px-6 py-3.5 rounded-xl bg-gradient-to-r from-sky-500 via-indigo-500 to-emerald-500 text-slate-950 font-bold text-sm font-mono tracking-wide shadow-xl shadow-sky-500/25 flex items-center gap-2 hover:scale-[1.02] active:scale-[0.98] transition-all">
+            <span>⚡</span>
+            <span>Launch Oral Viva Simulator</span>
+          </a>
+          <a href="subjects.html" class="px-5 py-3.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-slate-700 font-semibold text-sm font-mono transition-all flex items-center gap-2">
+            <span>📚</span>
+            <span>Explore 7 Subjects</span>
+          </a>
+          <a href="revision.html" class="px-5 py-3.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-slate-700 font-semibold text-sm font-mono transition-all flex items-center gap-2">
+            <span>🚀</span>
+            <span>Rapid Revision & Formulas</span>
+          </a>
+        </div>
+
+        <!-- Quick Keyboard hint -->
+        <div class="text-[11px] font-mono text-slate-400 pt-2 flex items-center gap-4">
+          <span>Shortcuts: Press <kbd class="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">V</kbd> for Viva</span>
+          <span><kbd class="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">/</kbd> to Search</span>
+          <span><kbd class="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">R</kbd> for Revision</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- KEY STATS METRICS ROW -->
+    <section class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="glass-card p-5 rounded-2xl border border-slate-800 text-center space-y-1">
+        <div class="text-3xl font-black text-sky-400 font-mono" id="stat-subjects">7</div>
+        <div class="text-xs font-semibold text-slate-200">Semester Courses</div>
+        <div class="text-[11px] text-slate-400">6 Theory/Labs + 1 Internship</div>
+      </div>
+      <div class="glass-card p-5 rounded-2xl border border-slate-800 text-center space-y-1">
+        <div class="text-3xl font-black text-indigo-400 font-mono" id="stat-questions">113+</div>
+        <div class="text-xs font-semibold text-slate-200">Authentic Viva Q&As</div>
+        <div class="text-[11px] text-slate-400">With verified answers & audio</div>
+      </div>
+      <div class="glass-card p-5 rounded-2xl border border-slate-800 text-center space-y-1">
+        <div class="text-3xl font-black text-emerald-400 font-mono" id="stat-units">37</div>
+        <div class="text-xs font-semibold text-slate-200">Syllabus Modules</div>
+        <div class="text-[11px] text-slate-400">Tagged with Mid Exam scope</div>
+      </div>
+      <div class="glass-card p-5 rounded-2xl border border-slate-800 text-center space-y-1">
+        <div class="text-3xl font-black text-pink-400 font-mono" id="stat-practicals">45+</div>
+        <div class="text-xs font-semibold text-slate-200">Laboratory Practicals</div>
+        <div class="text-[11px] text-slate-400">Indexed from lab manuals</div>
+      </div>
+    </section>
+
+    <!-- OFFICIAL SUBMISSION & VIVA SCHEDULE (FROM SSASIT CIRCULAR) -->
+    <section class="space-y-4">
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <div>
+          <h2 class="text-xl sm:text-2xl font-extrabold text-slate-100 tracking-tight flex items-center gap-2">
+            <span>📅</span>
+            <span>Official Term Work & Viva Examination Schedule</span>
+          </h2>
+          <p class="text-xs text-slate-400">Computer Engineering Department • Academic Year 2026 • Reporting Time: 9:00 AM</p>
+        </div>
+        <a href="about.html" class="text-xs font-mono text-sky-400 hover:text-sky-300">View Rules & Guidelines →</a>
+      </div>
+
+      <div class="glass-card rounded-2xl border border-slate-800 overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="data-table m-0">
+            <thead>
+              <tr>
+                <th>Date & Day</th>
+                <th>Course Code</th>
+                <th>Subject Name</th>
+                <th>Evaluation Format</th>
+                <th>Faculty In-Charge</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="schedule-table-body">
+              <!-- Dynamically Populated from data.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ALL 7 SUBJECT CARDS GRID -->
+    <section class="space-y-6">
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <div>
+          <h2 class="text-xl sm:text-2xl font-extrabold text-slate-100 tracking-tight flex items-center gap-2">
+            <span>📚</span>
+            <span>Semester 5 Courses Explorer</span>
+          </h2>
+          <p class="text-xs text-slate-400">Access full GTU syllabus, oral viva questions, practical lists, and unit-wise weightage.</p>
+        </div>
+        <a href="subjects.html" class="text-xs font-mono text-sky-400 hover:text-sky-300">View Detailed Cards →</a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="subject-cards-grid">
+        <!-- Injected via JavaScript from data.js -->
+      </div>
+    </section>
+
+    <!-- HIGH-PROBABILITY VIVA QUESTIONS SPOTLIGHT -->
+    <section class="glass-panel rounded-3xl p-6 sm:p-8 border border-slate-800 space-y-6">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <span class="px-2.5 py-0.5 rounded-full font-mono text-xs font-bold bg-amber-500/10 text-amber-400 border border-amber-500/30">
+            🔥 HIGH PROBABILITY
+          </span>
+          <h2 class="text-xl sm:text-2xl font-extrabold text-slate-100 tracking-tight mt-1">
+            Top Viva Questions Asked Frequently By External Examiners
+          </h2>
+        </div>
+        <a href="viva.html" class="btn-glow px-4 py-2 rounded-xl bg-sky-500/10 hover:bg-sky-500/20 text-sky-300 border border-sky-500/30 text-xs font-mono font-semibold">
+          All 113+ Questions →
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4" id="high-prob-viva-list">
+        <!-- Rendered via JS -->
+      </div>
+    </section>
+
+    <!-- MANDATORY INSTRUCTIONS & SUBMISSION CHECKLIST -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="glass-card p-6 rounded-2xl border border-slate-800 space-y-3">
+        <div class="text-sky-400 text-2xl font-bold">1️⃣ Attire & Identification</div>
+        <h3 class="text-base font-bold text-slate-200">Uniform & Identity Card</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          College uniform and valid student identity card are mandatory for all students appearing for oral viva and submission. Strict departmental compliance.
+        </p>
+      </div>
+
+      <div class="glass-card p-6 rounded-2xl border border-slate-800 space-y-3">
+        <div class="text-emerald-400 text-2xl font-bold">2️⃣ Certified Journal</div>
+        <h3 class="text-base font-bold text-slate-200">Practical Index Verification</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Ensure laboratory practical manuals have complete index signatures and faculty verification before entering the viva chamber.
+        </p>
+      </div>
+
+      <div class="glass-card p-6 rounded-2xl border border-slate-800 space-y-3">
+        <div class="text-pink-400 text-2xl font-bold">3️⃣ Assignment Submissions</div>
+        <h3 class="text-base font-bold text-slate-200">Signed Subject Sheets</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Signed copies of all assignments (Assignment 1, 2, 3) must be compiled in the term work file and presented during individual oral evaluation.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Global Footer -->
+  <div id="footer-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/navigation.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Render Navigation
+      window.renderNavbar('home');
+      window.renderFooter();
+
+      const data = window.ACADEMIC_DATA;
+      if (!data) return;
+
+      // 2. Populate Schedule Table
+      const scheduleBody = document.getElementById('schedule-table-body');
+      if (scheduleBody && data.DEPARTMENT_INFO) {
+        const schedule = data.DEPARTMENT_INFO.submissionSchedule || data.DEPARTMENT_INFO.vivaSchedule || [];
+        scheduleBody.innerHTML = schedule.map(s => {
+          let subId = 'internship';
+          let code = 'BE05000011';
+          let name = s.subject;
+          let type = s.note || 'Viva & MCQ';
+          if (s.subject.includes('BE05000011')) { subId = 'internship'; code = 'BE05000011'; name = 'Societal Internship'; }
+          else if (s.subject.includes('BE05000481')) { subId = 'pm'; code = 'BE05000481'; name = 'Project Management'; }
+          else if (s.subject.includes('BE05000231')) { subId = 'pds'; code = 'BE05000231'; name = 'Python for Data Science'; }
+          else if (s.subject.includes('BE05000281')) { subId = 'wad'; code = 'BE05000281'; name = 'Web Application Development'; }
+          else if (s.subject.includes('BE05000551')) { subId = 'mpi'; code = 'BE05000551'; name = 'Microprocessor and Interfacing'; }
+          else if (s.subject.includes('BE05000261')) { subId = 'ss'; code = 'BE05000261'; name = 'System Software'; }
+          else if (s.subject.includes('BE05000171')) { subId = 'cn'; code = 'BE05000171'; name = 'Computer Networks'; }
+
+          return `
+            <tr>
+              <td class="font-mono text-xs font-bold text-sky-400">${s.date}</td>
+              <td class="font-mono text-xs">${code}</td>
+              <td class="font-semibold text-slate-200">${name}</td>
+              <td><span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-900 border border-slate-800 text-emerald-400">${type}</span></td>
+              <td class="text-xs text-slate-300">${s.faculty}</td>
+              <td>
+                <a href="subjects/${subId}.html" class="px-2.5 py-1 rounded bg-slate-900 hover:bg-sky-500/20 text-sky-400 border border-slate-800 hover:border-sky-500/30 text-xs font-mono transition-colors">
+                  Prep →
+                </a>
+              </td>
+            </tr>
+          `;
+        }).join('');
+      }
+
+      // 3. Populate Subject Cards Grid
+      const cardsGrid = document.getElementById('subject-cards-grid');
+      if (cardsGrid) {
+        cardsGrid.innerHTML = data.SUBJECTS.map(s => {
+          const qCount = data.VIVA_QUESTIONS.filter(q => q.subjectId === s.id).length;
+          const units = (data.SYLLABUS[s.id] && data.SYLLABUS[s.id].units) ? data.SYLLABUS[s.id].units.length : 0;
+          return `
+            <div class="glass-card tilt-card rounded-2xl p-6 border border-slate-800 flex flex-col justify-between group hover:border-slate-700 transition-all">
+              <div class="space-y-4">
+                <div class="flex items-start justify-between">
+                  <span class="text-3xl p-2.5 rounded-xl bg-slate-900 border border-slate-800">${s.icon}</span>
+                  <div class="flex flex-col items-end gap-1 font-mono text-[11px]">
+                    <span class="px-2 py-0.5 rounded bg-sky-500/10 text-sky-400 border border-sky-500/30 font-bold">${s.code}</span>
+                    <span class="text-slate-400">${s.credits} Credits</span>
+                  </div>
+                </div>
+
+                <div>
+                  <h3 class="text-lg font-bold text-slate-100 group-hover:text-sky-300 transition-colors">
+                    ${s.name}
+                  </h3>
+                  <div class="text-xs font-mono text-slate-400 pt-1">${s.faculty}</div>
+                </div>
+
+                <p class="text-xs text-slate-400 leading-relaxed line-clamp-2">
+                  ${s.description}
+                </p>
+
+                <div class="flex items-center gap-3 pt-1 text-xs font-mono text-slate-300">
+                  <span class="flex items-center gap-1 text-sky-400">⚡ <strong>${qCount}</strong> Q&As</span>
+                  <span class="text-slate-600">•</span>
+                  <span class="flex items-center gap-1 text-emerald-400">📋 <strong>${units}</strong> Units</span>
+                </div>
+              </div>
+
+              <div class="pt-5 mt-4 border-t border-slate-800/80 flex items-center justify-between">
+                <a href="subjects/${s.id}.html" class="text-xs font-mono font-semibold text-slate-300 hover:text-sky-400 flex items-center gap-1">
+                  <span>Subject Details</span>
+                  <span>→</span>
+                </a>
+                <a href="viva.html?subject=${s.id}" class="px-3 py-1.5 rounded-lg bg-sky-500/10 hover:bg-sky-500 text-sky-400 hover:text-slate-950 font-mono text-xs font-bold transition-all border border-sky-500/30">
+                  ⚡ Viva
+                </a>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      // 4. Populate High-Probability Viva Questions Spotlight
+      const highProbContainer = document.getElementById('high-prob-viva-list');
+      if (highProbContainer) {
+        const importantQuestions = data.VIVA_QUESTIONS.filter(q => q.isImportant).slice(0, 4);
+        highProbContainer.innerHTML = importantQuestions.map((q, idx) => `
+          <div class="p-5 rounded-2xl bg-slate-900/60 border border-slate-800/80 space-y-3">
+            <div class="flex items-center justify-between text-xs">
+              <span class="px-2 py-0.5 rounded font-mono font-bold bg-slate-900 text-sky-400 border border-slate-800">
+                ${q.subjectName} • ${q.unit}
+              </span>
+              <button onclick="speakQuestion('${q.question.replace(/'/g, "\\'")}')" class="p-1 rounded bg-slate-900 text-slate-400 hover:text-sky-400 text-xs" title="Speak question aloud">🎙️</button>
+            </div>
+            <h4 class="text-sm font-semibold text-slate-100">${q.question}</h4>
+            <div class="text-xs text-slate-400 leading-relaxed font-sans">
+              <span class="text-sky-400 font-mono">Answer preview:</span> ${q.answer.replace(/<[^>]*>?/gm, '').substring(0, 140)}...
+            </div>
+            <div class="pt-1 flex justify-between items-center text-xs font-mono">
+              <span class="text-slate-400 text-[10px]">Topic: ${q.topic}</span>
+              <a href="viva.html?subject=${q.subjectId}#${q.id}" class="text-sky-400 hover:underline">Full Model Answer →</a>
+            </div>
+          </div>
+        `).join('');
+      }
+
+    });
+  </script>
+</body>
+</html>

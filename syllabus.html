@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GTU Official Syllabus Explorer | Semester 5 Computer Engineering</title>
+  <meta name="description" content="Comprehensive GTU Semester 5 syllabus browser for SSASIT. Explore course modules, topics, hours, weightage, reference textbooks, and mid-exam units.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased selection:bg-sky-500 selection:text-slate-950">
+
+  <div class="ambient-bg"></div>
+  <div class="ambient-grid"></div>
+
+  <div id="navbar-container"></div>
+  <div id="breadcrumbs-container" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"></div>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-10">
+
+    <!-- Header Section -->
+    <header class="glass-panel rounded-3xl p-6 sm:p-10 border border-slate-800 space-y-4">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div>
+          <span class="px-2.5 py-0.5 rounded-full font-mono text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+            OFFICIAL GTU CURRICULUM
+          </span>
+          <h1 class="text-3xl sm:text-4xl font-black text-slate-100 tracking-tight mt-1">
+            GTU Syllabus & Module Browser
+          </h1>
+          <p class="text-sm text-slate-300 max-w-2xl mt-1 leading-relaxed">
+            Directly transcribed from official Gujarat Technological University (GTU) syllabus sheets. Includes teaching hours, marks weightage, topics, and Mid Exam coverage.
+          </p>
+        </div>
+
+        <!-- Subject Switcher Dropdown -->
+        <div class="flex items-center gap-3">
+          <label for="subject-select" class="text-xs font-mono text-slate-400">Select Course:</label>
+          <select id="subject-select" class="px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-700 text-slate-200 text-xs font-mono focus:border-sky-500 focus:outline-none">
+            <!-- Populated via JS -->
+          </select>
+        </div>
+      </div>
+
+      <!-- Subject Tabs -->
+      <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-800/80 font-mono text-xs" id="syllabus-subject-tabs">
+        <!-- Rendered via JS -->
+      </div>
+    </header>
+
+    <!-- Active Subject Syllabus Header Card -->
+    <section class="glass-card rounded-2xl p-6 border border-slate-800 space-y-4" id="active-subject-header">
+      <!-- Injected via JS -->
+    </section>
+
+    <!-- Syllabus Modules List -->
+    <section class="space-y-4">
+      <div class="flex items-center justify-between">
+        <h2 class="text-xl sm:text-2xl font-extrabold text-slate-100 tracking-tight flex items-center gap-2">
+          <span>📑</span>
+          <span>Course Units & Detailed Topics</span>
+        </h2>
+        <div class="flex items-center gap-2 text-xs font-mono">
+          <button id="expand-all-units" class="px-3 py-1 rounded bg-slate-900 border border-slate-800 text-slate-400 hover:text-white">
+            Expand All Topics
+          </button>
+          <button id="collapse-all-units" class="px-3 py-1 rounded bg-slate-900 border border-slate-800 text-slate-400 hover:text-white">
+            Collapse All
+          </button>
+        </div>
+      </div>
+
+      <div class="space-y-4" id="units-container">
+        <!-- Rendered via JS -->
+      </div>
+    </section>
+
+    <!-- Reference Books & Course Outcomes -->
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-6" id="subject-extra-info">
+      <div class="glass-card p-6 rounded-2xl border border-slate-800 space-y-3">
+        <h3 class="text-base font-bold text-slate-200 flex items-center gap-2">
+          <span>📖</span>
+          <span>Prescribed Reference Books & Authors</span>
+        </h3>
+        <ul class="space-y-2 text-xs text-slate-300" id="reference-books-list">
+          <!-- Populated -->
+        </ul>
+      </div>
+
+      <div class="glass-card p-6 rounded-2xl border border-slate-800 space-y-3">
+        <h3 class="text-base font-bold text-slate-200 flex items-center gap-2">
+          <span>🎯</span>
+          <span>Suggested Practical / Lab Scope</span>
+        </h3>
+        <p class="text-xs text-slate-400 leading-relaxed" id="practical-scope-desc">
+          Official GTU laboratory coursework prescribed for continuous term work evaluation and external viva examination.
+        </p>
+        <div class="pt-2">
+          <a id="view-practicals-link" href="#" class="inline-flex items-center gap-1.5 text-xs font-mono text-sky-400 hover:underline">
+            View Prescribed Laboratory Practicals List →
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/navigation.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      window.renderNavbar('syllabus');
+      window.renderBreadcrumbs([
+        { label: 'Syllabus', url: 'syllabus.html' }
+      ]);
+      window.renderFooter();
+
+      const data = window.ACADEMIC_DATA;
+      if (!data) return;
+
+      let activeSubjectId = 'mpi'; // default
+
+      // Check URL search param
+      const urlParams = new URLSearchParams(window.location.search);
+      const paramSub = urlParams.get('subject');
+      if (paramSub && data.SUBJECTS.some(s => s.id === paramSub)) {
+        activeSubjectId = paramSub;
+      }
+
+      // Populate Select Dropdown
+      const selectEl = document.getElementById('subject-select');
+      if (selectEl) {
+        selectEl.innerHTML = data.SUBJECTS.map(s => `
+          <option value="${s.id}" ${s.id === activeSubjectId ? 'selected' : ''}>
+            ${s.code} - ${s.shortName}
+          </option>
+        `).join('');
+
+        selectEl.addEventListener('change', e => {
+          activeSubjectId = e.target.value;
+          renderSyllabusView();
+        });
+      }
+
+      // Populate Tabs
+      const tabsEl = document.getElementById('syllabus-subject-tabs');
+      function renderTabs() {
+        if (!tabsEl) return;
+        tabsEl.innerHTML = data.SUBJECTS.map(s => {
+          const isAct = s.id === activeSubjectId;
+          return `
+            <button class="syl-tab-btn px-3.5 py-1.5 rounded-xl border transition-all flex items-center gap-1.5 ${isAct ? 'bg-sky-500 text-slate-950 font-bold border-sky-400 shadow-lg shadow-sky-500/20' : 'bg-slate-900 text-slate-400 border-slate-800 hover:text-white'}" data-subject="${s.id}">
+              <span>${s.icon}</span>
+              <span>${s.shortName}</span>
+            </button>
+          `;
+        }).join('');
+
+        tabsEl.querySelectorAll('.syl-tab-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            activeSubjectId = btn.dataset.subject;
+            if (selectEl) selectEl.value = activeSubjectId;
+            renderSyllabusView();
+          });
+        });
+      }
+
+      function renderSyllabusView() {
+        renderTabs();
+        const sub = data.SUBJECTS.find(s => s.id === activeSubjectId);
+        const syl = data.SYLLABUS[activeSubjectId] || { units: [] };
+
+        // 1. Header Card
+        const headEl = document.getElementById('active-subject-header');
+        if (headEl) {
+          headEl.innerHTML = `
+            <div class="flex flex-wrap items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <span class="text-3xl p-2.5 rounded-xl bg-slate-900 border border-slate-800">${sub.icon}</span>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="px-2 py-0.5 rounded font-mono text-xs font-bold bg-sky-500/10 text-sky-400 border border-sky-500/30">${sub.code}</span>
+                    <span class="text-xs font-mono text-slate-400">${sub.credits} Credits • ${sub.category}</span>
+                  </div>
+                  <h2 class="text-2xl font-black text-slate-100 mt-1">${sub.name}</h2>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-2 font-mono text-xs">
+                <a href="subjects/${sub.id}.html" class="px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700">
+                  Subject Hub →
+                </a>
+                <a href="viva.html?subject=${sub.id}" class="btn-glow px-3.5 py-2 rounded-xl bg-sky-500/20 text-sky-300 border border-sky-500/40 font-bold">
+                  ⚡ Viva Q&As (${data.VIVA_QUESTIONS.filter(q => q.subjectId === sub.id).length})
+                </a>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 text-xs font-mono">
+              <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                <span class="text-slate-400">Total Units</span>
+                <p class="text-slate-100 font-bold text-sm mt-0.5">${syl.units.length} Modules</p>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                <span class="text-slate-400">Total Hours</span>
+                <p class="text-sky-400 font-bold text-sm mt-0.5">${syl.totalHours || '45-48'} Hours</p>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                <span class="text-slate-400">Mid Exam Scope</span>
+                <p class="text-emerald-400 font-bold text-sm mt-0.5">Units ${sub.midExamUnits.join(', ')}</p>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                <span class="text-slate-400">Term Work Date</span>
+                <p class="text-pink-400 font-bold text-sm mt-0.5">${sub.vivaDate}</p>
+              </div>
+            </div>
+          `;
+        }
+
+        // 2. Units Container
+        const unitsEl = document.getElementById('units-container');
+        if (unitsEl) {
+          unitsEl.innerHTML = syl.units.map(u => `
+            <div class="glass-card rounded-2xl p-5 border border-slate-800 space-y-3 unit-card">
+              <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800/60 pb-3">
+                <div class="flex items-center gap-3">
+                  <span class="w-8 h-8 rounded-lg bg-sky-500/10 border border-sky-500/30 text-sky-400 flex items-center justify-center font-mono font-bold text-sm">
+                    ${u.unitNum}
+                  </span>
+                  <div>
+                    <h3 class="text-base font-bold text-slate-100">${u.title}</h3>
+                    <div class="text-[11px] font-mono text-slate-400">Teaching Hours: ${u.hours} • Weightage: ${u.weightage}</div>
+                  </div>
+                </div>
+
+                <div>
+                  ${u.inMidExam 
+                    ? '<span class="px-2.5 py-1 rounded text-xs font-mono font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">✓ Included in Mid Exam</span>'
+                    : '<span class="px-2.5 py-1 rounded text-xs font-mono text-slate-400 bg-slate-900 border border-slate-800">Post-Mid Scope</span>'
+                  }
+                </div>
+              </div>
+
+              <div class="space-y-2 pt-1">
+                <h4 class="text-xs font-mono font-bold uppercase tracking-wider text-slate-400">Topics Prescribed:</h4>
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs text-slate-300">
+                  ${u.topics.map(t => `
+                    <li class="flex items-start gap-2 p-2 rounded-lg bg-slate-900/40 border border-slate-800/60">
+                      <span class="text-sky-400 shrink-0">•</span>
+                      <span>${t}</span>
+                    </li>
+                  `).join('')}
+                </ul>
+              </div>
+            </div>
+          `).join('');
+        }
+
+        // 3. Reference Books
+        const refEl = document.getElementById('reference-books-list');
+        if (refEl) {
+          const defaultBooks = [
+            'Ramesh S. Gaonkar, "Microprocessor Architecture, Programming, and Applications with the 8085", Penram International',
+            'Andrew S. Tanenbaum, "Computer Networks", Pearson Education',
+            'Wes McKinney, "Python for Data Analysis", O\'Reilly Media',
+            'Dhamdhere D. M., "Systems Programming and Operating Systems", Tata McGraw Hill',
+            'Robin Nixon, "Learning PHP, MySQL & JavaScript", O\'Reilly'
+          ];
+          refEl.innerHTML = (syl.referenceBooks || defaultBooks).map(b => `
+            <li class="flex items-start gap-2">
+              <span class="text-sky-400 shrink-0">📚</span>
+              <span>${b}</span>
+            </li>
+          `).join('');
+        }
+
+        // 4. Practicals Link
+        const pracLink = document.getElementById('view-practicals-link');
+        if (pracLink) {
+          pracLink.href = `subjects/${sub.id}.html#practicals`;
+        }
+      }
+
+      renderSyllabusView();
+
+      // Expand/Collapse Buttons
+      const expandBtn = document.getElementById('expand-all-units');
+      const collapseBtn = document.getElementById('collapse-all-units');
+      if (expandBtn) {
+        expandBtn.addEventListener('click', () => {
+          document.querySelectorAll('.unit-card ul').forEach(el => el.classList.remove('hidden'));
+        });
+      }
+      if (collapseBtn) {
+        collapseBtn.addEventListener('click', () => {
+          document.querySelectorAll('.unit-card ul').forEach(el => el.classList.add('hidden'));
+        });
+      }
+    });
+  </script>
+</body>
+</html>
