@@ -68,7 +68,7 @@ SEM5-VIVA/
 ├── index.html                   # Executive Dashboard & Mission Control
 ├── subjects.html                # Complete 7-Course Directory & GTU Matrix
 ├── syllabus.html                # GTU Syllabus Browser with Mid-Exam Tags
-├── viva.html                    # Interactive Oral Viva Simulator (113+ Q&As)
+├── viva.html                    # Interactive Oral Viva Simulator (650+ Q&As)
 ├── search.html                  # Global Multi-Index Search Engine
 ├── revision.html                # Rapid Revision & Formula Cheat-Sheets
 ├── about.html                   # Department Regulations & Faculty Directory
@@ -86,7 +86,7 @@ SEM5-VIVA/
 │   └── style.css                # Tech-Dark Design System & Print Styles
 │
 └── js/
-    ├── data.js                  # Master Academic Database (313 KB, 113+ Q&As)
+    ├── data.js                  # Master Academic Database (940 KB, 650+ Q&As)
     ├── app.js                   # State, SpeechSynthesis, Favorites, Shortcuts
     ├── navigation.js            # Unified Topbar, Breadcrumbs & Footer
     ├── viva.js                  # Interactive Viva Filter Engine
@@ -105,7 +105,7 @@ SEM5-VIVA/
    - 👁️ **Collapsible Model Answers:** Reveals structured, point-by-point answers, reference textbooks, and examiner tips.
    - 🎲 **Random Question Launcher:** Simulates real viva stress by picking questions at random across subjects.
 2. **Instant Multi-Index Search (`search.html`):**
-   - Real-time client-side search across all 113+ questions, 37 syllabus modules, practical manuals, and formulas with keyword highlighting (`<mark>`).
+   - Real-time client-side search across all 650+ questions, 37 syllabus modules, practical manuals, and formulas with keyword highlighting (`<mark>`).
 3. **Rapid Revision Hub (`revision.html`):**
    - Formula calculators, PERT/CPM equations, 8085 timing formulas, TCP handshake summaries, and clipboard copy buttons.
 4. **Syllabus Explorer (`syllabus.html`):**

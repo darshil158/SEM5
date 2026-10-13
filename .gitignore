@@ -22,3 +22,6 @@ yarn-debug.log*
 .env.*
 *.pem
 *.key
+
+# Prompts & Local Instructions
+prompt.txt
