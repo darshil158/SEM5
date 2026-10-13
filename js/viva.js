@@ -277,8 +277,10 @@
         const cardEl = document.getElementById(randQ.id);
         if (cardEl) {
           cardEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          cardEl.classList.add('ring-2', 'ring-sky-500');
-          setTimeout(() => cardEl.classList.remove('ring-2', 'ring-sky-500'), 1500);
+          const isDark = document.documentElement.classList.contains('dark');
+          const ringClass = isDark ? 'ring-sky-500' : 'ring-red-600';
+          cardEl.classList.add('ring-2', ringClass);
+          setTimeout(() => cardEl.classList.remove('ring-2', ringClass), 1600);
           // auto open answer
           const ansEl = document.getElementById(`ans-${randQ.id}`);
           if (ansEl) ansEl.classList.add('revealed');
