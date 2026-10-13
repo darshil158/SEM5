@@ -443,8 +443,14 @@ html:not(.dark) .bg-slate-950\/80 {
 }
 
 html:not(.dark) .bg-slate-900,
+html:not(.dark) .bg-slate-900\/95,
+html:not(.dark) .bg-slate-900\/90,
+html:not(.dark) .bg-slate-900\/80,
+html:not(.dark) .bg-slate-900\/70,
 html:not(.dark) .bg-slate-900\/60,
-html:not(.dark) .bg-slate-900\/80 {
+html:not(.dark) .bg-slate-900\/50,
+html:not(.dark) .bg-slate-900\/40,
+html:not(.dark) [class*="bg-slate-900"] {
   background-color: #ffffff;
 }
 
@@ -452,6 +458,42 @@ html:not(.dark) .bg-slate-800,
 html:not(.dark) .bg-slate-800\/80 {
   background-color: #f1f5f9;
 }
+
+/* Secondary Hero Buttons in Light Mode (Explore 7 Subjects & Rapid Revision) */
+html:not(.dark) .hero-btn-secondary,
+html:not(.dark) a.hero-btn-secondary,
+html:not(.dark) a[href="subjects.html"].bg-slate-900\/90,
+html:not(.dark) a[href="revision.html"].bg-slate-900\/90 {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08) !important;
+}
+
+html:not(.dark) .hero-btn-secondary *,
+html:not(.dark) a.hero-btn-secondary *,
+html:not(.dark) a[href="subjects.html"].bg-slate-900\/90 *,
+html:not(.dark) a[href="revision.html"].bg-slate-900\/90 * {
+  color: #0f172a !important;
+}
+
+html:not(.dark) .hero-btn-secondary:hover,
+html:not(.dark) a.hero-btn-secondary:hover,
+html:not(.dark) a[href="subjects.html"].bg-slate-900\/90:hover,
+html:not(.dark) a[href="revision.html"].bg-slate-900\/90:hover {
+  background-color: #fef2f2 !important;
+  color: #dc2626 !important;
+  border-color: rgba(220, 38, 38, 0.4) !important;
+  box-shadow: 0 4px 12px 0 rgba(220, 38, 38, 0.12) !important;
+}
+
+html:not(.dark) .hero-btn-secondary:hover *,
+html:not(.dark) a.hero-btn-secondary:hover *,
+html:not(.dark) a[href="subjects.html"].bg-slate-900\/90:hover *,
+html:not(.dark) a[href="revision.html"].bg-slate-900\/90:hover * {
+  color: #dc2626 !important;
+}
+
 
 /* Borders in Light Mode */
 html:not(.dark) .border-slate-900,
