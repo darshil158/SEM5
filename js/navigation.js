@@ -13,8 +13,11 @@
     const navPlaceholder = document.getElementById('navbar-container');
     if (!navPlaceholder) return;
 
+    // Ensure the placeholder reserves the 64px (h-16) height in document flow
+    navPlaceholder.className = 'h-16 block shrink-0';
+
     const navHTML = `
-      <header class="sticky top-0 z-50 glass-panel border-b border-slate-800/80 backdrop-blur-xl transition-colors duration-200">
+      <header id="main-navbar" class="fixed top-0 left-0 right-0 w-full z-50 glass-panel border-b border-slate-800/80 backdrop-blur-xl transition-all duration-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2">
           
           <!-- Brand Logo -->
@@ -67,7 +70,7 @@
         </div>
 
         <!-- Mobile Drawer -->
-        <div id="mobile-drawer" class="hidden lg:hidden px-4 pt-2 pb-5 space-y-2 bg-slate-950/95 border-b border-slate-800 backdrop-blur-2xl transition-all duration-300">
+        <div id="mobile-drawer" class="hidden lg:hidden px-4 pt-2 pb-5 space-y-2 bg-slate-950/95 border-b border-slate-800 backdrop-blur-2xl transition-all duration-300 max-h-[calc(100vh-4.5rem)] overflow-y-auto">
           <nav class="space-y-1 font-medium text-sm">
             <a href="${p}index.html" class="mobile-nav-link flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl text-slate-300 hover:bg-slate-800/80 transition-colors ${activePage === 'home' ? 'text-sky-400 font-bold bg-slate-900 border border-sky-800/40' : ''}">
               <span>🏠</span><span>Home</span>
@@ -120,6 +123,20 @@
       mobToggle.addEventListener('click', () => {
         if (window.Theme) window.Theme.toggleTheme();
       });
+    }
+
+    // Dynamic Scroll Elevation Handler
+    const mainNav = document.getElementById('main-navbar');
+    if (mainNav) {
+      const handleScroll = () => {
+        if (window.scrollY > 10) {
+          mainNav.classList.add('navbar-scrolled');
+        } else {
+          mainNav.classList.remove('navbar-scrolled');
+        }
+      };
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      handleScroll();
     }
 
     // Mobile Hamburger Toggle Behavior
